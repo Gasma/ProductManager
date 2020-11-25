@@ -1,0 +1,6 @@
+/api/src/gasmaToolsProducts/bin/
+/api/src/gasmaToolsProducts/obj/
+/api/test/gasmaToolsProducts.Test.Unit/bin/
+/api/test/gasmaToolsProducts.Test.Unit/obj/
+api/.vs/gasmaToolsProducts/v16/.suo
+api/src/gasmaToolsProducts/gasmaToolsProducts.csproj.user

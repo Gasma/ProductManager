@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30711.63
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "gasmaToolsProducts", "src\gasmaToolsProducts\gasmaToolsProducts.csproj", "{D9AA3903-CC30-4F21-A8DE-CF5D2AB09FF3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "gasmaToolsProducts.Test.Unit", "test\gasmaToolsProducts.Test.Unit\gasmaToolsProducts.Test.Unit.csproj", "{35DC9BB5-459B-46FE-AB0E-43D2260C4276}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D9AA3903-CC30-4F21-A8DE-CF5D2AB09FF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9AA3903-CC30-4F21-A8DE-CF5D2AB09FF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9AA3903-CC30-4F21-A8DE-CF5D2AB09FF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9AA3903-CC30-4F21-A8DE-CF5D2AB09FF3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35DC9BB5-459B-46FE-AB0E-43D2260C4276}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35DC9BB5-459B-46FE-AB0E-43D2260C4276}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35DC9BB5-459B-46FE-AB0E-43D2260C4276}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35DC9BB5-459B-46FE-AB0E-43D2260C4276}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A53B4FE4-8AF6-4827-882C-9659E239C5FB}
+	EndGlobalSection
+EndGlobal
