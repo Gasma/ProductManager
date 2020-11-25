@@ -1,0 +1,26 @@
+<div class="wrapper">
+  <div class="wrapped-div">
+    <div class="tab-header">
+      <h2>Login</h2>
+    </div>
+    <div class="row">
+      <div class="class col-md-10 offset-md-1">
+        <form #form='ngForm' class="mb-4" autocomplete="off" (submit)="onSubmit(form)">
+          <div class="form-group">
+            <label for="UserName">Usuario</label>
+            <input #UserName='ngModel' name="UserName" [(ngModel)]="formModel.UserName" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="Password">Senha</label>
+            <input #Password='ngModel' name="Password" [(ngModel)]="formModel.Password" class="form-control" type="password">
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-8 offset-md-2">
+              <button type="submit" class="btn btn-lg btn-block">Login</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
