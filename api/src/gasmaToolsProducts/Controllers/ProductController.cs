@@ -9,7 +9,7 @@ namespace gasmaToolsProducts.Controllers
 {
     [Route("api/product")]
     [ApiController]
-    //[Authorize]
+    [Authorize]
     public class ProductController : ControllerBase
     {
         private readonly IMediator _mediator;
