@@ -8,7 +8,6 @@ import { ProductService } from 'src/app/services/product.service';
 import { ProductComponent } from './product/product.component';
 import { Product } from 'src/app/models/product.model';
 import { LoginService } from 'src/app/services/login.service';
-import { ImageHelper } from 'src/app/helpers/image.helper';
 
 @Component({
   selector: 'app-home',
@@ -18,8 +17,9 @@ import { ImageHelper } from 'src/app/helpers/image.helper';
 
 export class HomeComponent implements AfterViewInit {
 
-  displayedColumns: string[] = ['name', 'price', 'photoUrl', 'action'];
+  displayedColumns: string[] = ['name', 'price', 'urlPhoto', 'action'];
   dataSource: MatTableDataSource<Product>;
+  public urlDefault: string = "/assets/img/imgDefault.png";
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -68,7 +68,7 @@ export class HomeComponent implements AfterViewInit {
   openDialogLend(action, obj) {
     obj.action = action;
     const dialogRef = this.dialog.open(ProductComponent, {
-      width: '300px',
+      width: '500px',
       height: (obj.action == 'Apagar')? '250px': '450px',
       data:obj
     });
@@ -87,10 +87,12 @@ export class HomeComponent implements AfterViewInit {
   }
 
   private populateFormData(row_obj: any) {
-    const formData = new FormData();
+    const formData: FormData = new FormData();
     for (var key in row_obj)
       formData.append(key, row_obj[key]);
-
+    // formData.append('file', row_obj.file);
+    // formData.append('name', row_obj.name);
+    // formData.append('price', row_obj.price);
     return formData;
   }
 
@@ -108,7 +110,8 @@ export class HomeComponent implements AfterViewInit {
 
   updateRowData(row_obj)
   {
-    this.productService.saveProduct(row_obj).subscribe(res => {
+    let body = this.populateFormData(row_obj);
+    this.productService.saveProduct(body).subscribe(res => {
       if (res != null)
       {
         this.getAllProduct();
@@ -117,11 +120,12 @@ export class HomeComponent implements AfterViewInit {
     });
   }
 
-  deleteRowData(row_obj)
+  deleteRowData(row_obj:any)
   {
-    // this.dataSource = this.dataSource.filter((value,key)=>{
-    //   return value.id != row_obj.id;
-    // });
+    this.productService.deleteProduct(row_obj.id).subscribe(res => {
+        this.getAllProduct();
+        this.table.renderRows();
+    });
   }
 
 }

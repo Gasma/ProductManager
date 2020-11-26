@@ -1,19 +1,29 @@
 <h1 mat-dialog-title><strong>{{action}}</strong> um produto</h1>
 <div mat-dialog-content *ngIf="action != 'Apagar'; else elseTemplate">
+  <mat-form-field style="display: none;">
+    <input matInput [(ngModel)]="local_data.id">
+  </mat-form-field>
   <mat-form-field class="full-width">
     <input placeholder="Nome" matInput [(ngModel)]="local_data.name">
   </mat-form-field>
   <mat-form-field class="full-width">
-    <input placeholder="Preço" matInput currencyMask [(ngModel)]="local_data.price" [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }">
+    <input placeholder="Preço" matInput currencyMask [(ngModel)]="local_data.price"
+      [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }">
   </mat-form-field>
+  <img [src]="local_data.urlPhoto" *ngIf="local_data.urlPhoto != null" style="width: 150px;height: 100px;"/>
+  <img [src]="urlString" *ngIf="local_data.urlPhoto == null" style="width: 150px;height: 100px;"/>
   <mat-form-field class="full-width">
-    <ngx-mat-file-input #removableInput  [(ngModel)]="local_data.file" placeholder="Clique para adicionar um arquivo"></ngx-mat-file-input>
-    <button mat-icon-button matSuffix *ngIf="!removableInput.empty" (click)="removableInput.clear($event)">
+    <ngx-mat-file-input #fileUploadInput (change)="handleFileSelect($event.target.files)" [(ngModel)]="local_data.file"
+      placeholder="Clique para adicionar um arquivo" accept="image/*"></ngx-mat-file-input>
+    <button mat-icon-button matSuffix *ngIf="!fileUploadInput.empty" (click)="fileUploadInput.clear($event)">
       <mat-icon>Limpar</mat-icon>
     </button>
   </mat-form-field>
 </div>
 <ng-template #elseTemplate>
+  <mat-form-field style="display: none;">
+    <input matInput [(ngModel)]="local_data.id">
+  </mat-form-field>
   Tem certeza que quer apagar <b>{{local_data.name}}</b>?
 </ng-template>
 <div mat-dialog-actions>

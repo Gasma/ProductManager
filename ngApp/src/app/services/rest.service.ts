@@ -25,6 +25,11 @@ export class RestService {
     return this.http.put<Product>(this.BaseUrl + url, body);
   }
 
+  sendDeleteRequest(url: string, body: any)
+  {
+    return this.http.delete(this.BaseUrl  + url + '/' + body);
+  }
+
   sendGetRequest(url: string)
   {
     return this.http.get<Product[]>(this.BaseUrl + url);

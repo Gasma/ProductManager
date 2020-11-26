@@ -31,13 +31,13 @@ namespace gasmaToolsProducts.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateProduct([FromBody] CreateProductCommand command)
+        public async Task<IActionResult> CreateProduct([FromForm] CreateProductCommand command)
         {
             return Ok(await _mediator.Send(command));
         }
 
         [HttpPut]
-        public async Task<IActionResult> UpdateProduct([FromBody] UpdateProductCommand command)
+        public async Task<IActionResult> UpdateProduct([FromForm] UpdateProductCommand command)
         {
             return Ok(await _mediator.Send(command));
         }

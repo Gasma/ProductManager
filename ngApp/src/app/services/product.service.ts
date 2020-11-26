@@ -16,10 +16,15 @@ export class ProductService {
 
   saveProduct(product: any)
   {
-    if (product.id == null)
+    if (!product.has('id'))
       return this.rest.sendPostRequest('api/product', product);
     else
       return this.rest.sendPutRequest('api/product', product);
 
+  }
+
+  deleteProduct(product)
+  {
+    return this.rest.sendDeleteRequest('api/product', product);
   }
 }

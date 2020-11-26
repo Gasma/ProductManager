@@ -1,4 +1,4 @@
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA, DEFAULT_CURRENCY_CODE, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
@@ -26,8 +26,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { HomeComponent } from './views/home/home.component';
 import { ProductComponent } from './views/home/product/product.component';
 import { LoginComponent } from './views/login/login.component';
-import { ImageHelper } from './helpers/image.helper';
 import { CurrencyMaskModule } from "ng2-currency-mask";
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
+
+registerLocaleData(localePt);
 
 @NgModule({
   declarations: [
@@ -59,11 +62,11 @@ import { CurrencyMaskModule } from "ng2-currency-mask";
     CurrencyMaskModule,
     MaterialFileInputModule
   ],
-  providers: [ LoginService, ImageHelper, {
+  providers: [ LoginService, {
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi:true
-  }],
+  }, { provide: LOCALE_ID, useValue: 'pt-BR' } ],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

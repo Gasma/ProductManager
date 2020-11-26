@@ -33,19 +33,25 @@
 
           <ng-container matColumnDef="price">
             <th mat-header-cell *matHeaderCellDef><strong>Preço</strong></th>
-            <td mat-cell *matCellDef="let element">{{ element.price | currency:'BRL': 'code' }}</td>
+            <td mat-cell *matCellDef="let element">{{ element.price | currency:'BRL': 'symbol' }}</td>
           </ng-container>
           <!-- .replace('.',',') -->
-          <ng-container matColumnDef="photoUrl">
+          <ng-container matColumnDef="urlPhoto">
             <th mat-header-cell *matHeaderCellDef> Imagem </th>
-            <td mat-cell *matCellDef="let element"><img [src]="element.photoUrl" /></td>
+            <td mat-cell *matCellDef="let element"><img [src]="element.urlPhoto" *ngIf="element.urlPhoto != null" style="width: 50px;height: 50px;"/>
+              <img [src]="urlDefault" *ngIf="element.urlPhoto == null" style="width: 50px;height: 50px;"/>
+            </td>
           </ng-container>
 
           <ng-container matColumnDef="action">
             <th mat-header-cell *matHeaderCellDef><strong>Ações</strong></th>
             <td mat-cell *matCellDef="let element" class="action-link">
-              <a (click)="openDialogLend('Editar',element)">Editar</a> |
-              <a (click)="openDialogLend('Apagar',element)">Remover</a>
+              <button (click)="openDialogLend('Editar',element)" mat-mini-fab color="primary">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button (click)="openDialogLend('Apagar',element)" mat-mini-fab color="primary">
+                <mat-icon>delete</mat-icon>
+              </button>
             </td>
           </ng-container>
 
